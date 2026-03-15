@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/oregister/openregister-cli/internal/apiquery"
+	"github.com/oregister/openregister-cli/internal/requestflag"
 	"github.com/oregister/openregister-go"
 	"github.com/oregister/openregister-go/option"
-	"github.com/stainless-sdks/openregister-cli/internal/apiquery"
-	"github.com/stainless-sdks/openregister-cli/internal/requestflag"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )

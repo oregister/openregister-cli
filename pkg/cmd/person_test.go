@@ -5,7 +5,7 @@ package cmd
 import (
 	"testing"
 
-	"github.com/stainless-sdks/openregister-cli/internal/mocktest"
+	"github.com/oregister/openregister-cli/internal/mocktest"
 )
 
 func TestPersonGetDetailsV1(t *testing.T) {
