@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/openregister-cli
+module github.com/oregister/openregister-cli
 
 go 1.25
 

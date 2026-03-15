@@ -14,11 +14,11 @@ import (
 	"strings"
 	"unicode/utf8"
 
+	"github.com/oregister/openregister-cli/internal/apiform"
+	"github.com/oregister/openregister-cli/internal/apiquery"
+	"github.com/oregister/openregister-cli/internal/debugmiddleware"
+	"github.com/oregister/openregister-cli/internal/requestflag"
 	"github.com/oregister/openregister-go/option"
-	"github.com/stainless-sdks/openregister-cli/internal/apiform"
-	"github.com/stainless-sdks/openregister-cli/internal/apiquery"
-	"github.com/stainless-sdks/openregister-cli/internal/debugmiddleware"
-	"github.com/stainless-sdks/openregister-cli/internal/requestflag"
 
 	"github.com/goccy/go-yaml"
 	"github.com/urfave/cli/v3"

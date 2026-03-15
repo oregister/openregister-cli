@@ -10,8 +10,8 @@ import (
 	"os"
 	"slices"
 
+	"github.com/oregister/openregister-cli/pkg/cmd"
 	"github.com/oregister/openregister-go"
-	"github.com/stainless-sdks/openregister-cli/pkg/cmd"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
