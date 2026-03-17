@@ -12,8 +12,9 @@ func TestPersonGetDetailsV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "person", "get-details-v1",
+			t,
 			"--api-key", "string",
+			"person", "get-details-v1",
 			"--person-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -23,8 +24,9 @@ func TestPersonGetHoldingsV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "person", "get-holdings-v1",
+			t,
 			"--api-key", "string",
+			"person", "get-holdings-v1",
 			"--person-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

@@ -13,8 +13,9 @@ func TestSearchAutocompleteCompaniesV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "search", "autocomplete-companies-v1",
+			t,
 			"--api-key", "string",
+			"search", "autocomplete-companies-v1",
 			"--query", "query",
 		)
 	})
@@ -24,8 +25,9 @@ func TestSearchFindCompaniesV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "search", "find-companies-v1",
+			t,
 			"--api-key", "string",
+			"search", "find-companies-v1",
 			"--filter", "{keywords: [string], max: max, min: min, value: value, values: [string], field: status}",
 			"--location", "{latitude: 0, longitude: 0, radius: 0}",
 			"--pagination", "{page: 0, per_page: 0}",
@@ -39,8 +41,9 @@ func TestSearchFindCompaniesV1(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "search", "find-companies-v1",
+			t,
 			"--api-key", "string",
+			"search", "find-companies-v1",
 			"--filter", "{keywords: [string], max: max, min: min, value: value, values: [string], field: status}",
 			"--location.latitude", "0",
 			"--location.longitude", "0",
@@ -73,8 +76,9 @@ func TestSearchFindCompaniesV1(t *testing.T) {
 			"query:\n" +
 			"  value: value\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "search", "find-companies-v1",
+			t, pipeData,
 			"--api-key", "string",
+			"search", "find-companies-v1",
 		)
 	})
 }
@@ -83,8 +87,9 @@ func TestSearchFindPersonV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "search", "find-person-v1",
+			t,
 			"--api-key", "string",
+			"search", "find-person-v1",
 			"--filter", "{keywords: [string], max: max, min: min, value: value, values: [string], field: date_of_birth}",
 			"--pagination", "{page: 0, per_page: 0}",
 			"--query", "{value: value}",
@@ -97,8 +102,9 @@ func TestSearchFindPersonV1(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "search", "find-person-v1",
+			t,
 			"--api-key", "string",
+			"search", "find-person-v1",
 			"--filter", "{keywords: [string], max: max, min: min, value: value, values: [string], field: date_of_birth}",
 			"--pagination.page", "0",
 			"--pagination.per-page", "0",
@@ -124,8 +130,9 @@ func TestSearchFindPersonV1(t *testing.T) {
 			"query:\n" +
 			"  value: value\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "search", "find-person-v1",
+			t, pipeData,
 			"--api-key", "string",
+			"search", "find-person-v1",
 		)
 	})
 }
@@ -134,8 +141,9 @@ func TestSearchLookupCompanyByURL(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "search", "lookup-company-by-url",
+			t,
 			"--api-key", "string",
+			"search", "lookup-company-by-url",
 			"--url", "https://example.com",
 		)
 	})
