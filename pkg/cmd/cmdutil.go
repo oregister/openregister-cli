@@ -17,7 +17,7 @@ import (
 	"syscall"
 
 	"github.com/oregister/openregister-cli/internal/jsonview"
-	"github.com/oregister/openregister-go/option"
+	"github.com/oregister/openregister-go/v2/option"
 
 	"github.com/charmbracelet/x/term"
 	"github.com/itchyny/json2yaml"
