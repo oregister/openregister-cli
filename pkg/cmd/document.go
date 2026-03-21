@@ -41,6 +41,7 @@ var documentGetRealtimeV1 = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "document-category",
+			Usage:     `Allowed values: "current_printout", "chronological_printout", "historical_printout", "structured_information", "shareholder_list", "articles_of_association".`,
 			Required:  true,
 			QueryPath: "document_category",
 		},
