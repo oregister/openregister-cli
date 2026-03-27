@@ -121,6 +121,16 @@ func init() {
 				},
 			},
 			{
+				Name:     "monitor",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&monitorCreate,
+					&monitorList,
+					&monitorDelete,
+				},
+			},
+			{
 				Name:            "@manpages",
 				Usage:           "Generate documentation for 'man'",
 				UsageText:       "openregister @manpages [-o openregister.1] [--gzip]",
