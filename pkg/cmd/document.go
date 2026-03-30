@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/oregister/openregister-go"
-	"github.com/oregister/openregister-go/option"
-	"github.com/stainless-sdks/openregister-cli/internal/apiquery"
-	"github.com/stainless-sdks/openregister-cli/internal/requestflag"
+	"github.com/oregister/openregister-cli/internal/apiquery"
+	"github.com/oregister/openregister-cli/internal/requestflag"
+	"github.com/oregister/openregister-go/v2"
+	"github.com/oregister/openregister-go/v2/option"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
@@ -41,6 +41,7 @@ var documentGetRealtimeV1 = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "document-category",
+			Usage:     `Allowed values: "current_printout", "chronological_printout", "historical_printout", "structured_information", "shareholder_list", "articles_of_association".`,
 			Required:  true,
 			QueryPath: "document_category",
 		},

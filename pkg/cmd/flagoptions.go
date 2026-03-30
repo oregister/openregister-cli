@@ -14,11 +14,11 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/oregister/openregister-go/option"
-	"github.com/stainless-sdks/openregister-cli/internal/apiform"
-	"github.com/stainless-sdks/openregister-cli/internal/apiquery"
-	"github.com/stainless-sdks/openregister-cli/internal/debugmiddleware"
-	"github.com/stainless-sdks/openregister-cli/internal/requestflag"
+	"github.com/oregister/openregister-cli/internal/apiform"
+	"github.com/oregister/openregister-cli/internal/apiquery"
+	"github.com/oregister/openregister-cli/internal/debugmiddleware"
+	"github.com/oregister/openregister-cli/internal/requestflag"
+	"github.com/oregister/openregister-go/v2/option"
 
 	"github.com/goccy/go-yaml"
 	"github.com/urfave/cli/v3"
@@ -219,7 +219,7 @@ func flagOptions(
 
 	requestContents := requestflag.ExtractRequestContents(cmd)
 
-	if bodyType != ApplicationOctetStream && isInputPiped() && !ignoreStdin {
+	if (bodyType == MultipartFormEncoded || bodyType == ApplicationJSON) && !ignoreStdin && isInputPiped() {
 		pipeData, err := io.ReadAll(os.Stdin)
 		if err != nil {
 			return nil, err
@@ -246,17 +246,15 @@ func flagOptions(
 	}
 
 	if missingFlags := requestflag.GetMissingRequiredFlags(cmd, requestContents.Body); len(missingFlags) > 0 {
-		var buf bytes.Buffer
-		cli.HelpPrinter(&buf, cli.SubcommandHelpTemplate, cmd)
-		usage := buf.String()
 		if len(missingFlags) == 1 {
-			return nil, fmt.Errorf("%sRequired flag %q not set", usage, missingFlags[0].Names()[0])
+			return nil, fmt.Errorf("Required flag %q not set\nRun '%s --help' for usage information", missingFlags[0].Names()[0], cmd.FullName())
+
 		} else {
 			names := []string{}
 			for _, flag := range missingFlags {
 				names = append(names, flag.Names()[0])
 			}
-			return nil, fmt.Errorf("%sRequired flags %q not set", usage, strings.Join(names, ", "))
+			return nil, fmt.Errorf("Required flags %q not set\nRun '%s --help' for usage information", strings.Join(names, ", "), cmd.FullName())
 		}
 	}
 

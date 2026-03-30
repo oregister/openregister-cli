@@ -12,8 +12,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/stainless-sdks/openregister-cli/internal/autocomplete"
-	"github.com/stainless-sdks/openregister-cli/internal/requestflag"
+	"github.com/oregister/openregister-cli/internal/autocomplete"
+	"github.com/oregister/openregister-cli/internal/requestflag"
 	docs "github.com/urfave/cli-docs/v3"
 	"github.com/urfave/cli/v3"
 )
@@ -118,6 +118,16 @@ func init() {
 				Commands: []*cli.Command{
 					&personGetDetailsV1,
 					&personGetHoldingsV1,
+				},
+			},
+			{
+				Name:     "monitor",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&monitorCreate,
+					&monitorList,
+					&monitorDelete,
 				},
 			},
 			{
