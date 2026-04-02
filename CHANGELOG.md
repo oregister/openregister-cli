@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2026-04-02)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/oregister/openregister-cli/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* handle empty data set using `--format explore` ([309a4c3](https://github.com/oregister/openregister-cli/commit/309a4c37d63ba09846ccb972c95ca71258ef59fa))
+* use `RawJSON` when iterating items with `--format explore` in the CLI ([a02e2ae](https://github.com/oregister/openregister-cli/commit/a02e2ae3a5df3da490006ccb6d3e0e48aab103a9))
+
 ## 0.1.0 (2026-03-30)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/oregister/openregister-cli/compare/v0.0.1...v0.1.0)
