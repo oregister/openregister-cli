@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.2.0 (2026-04-08)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/oregister/openregister-cli/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* allow `-` as value representing stdin to binary-only file parameters in CLIs ([3e1beec](https://github.com/oregister/openregister-cli/commit/3e1beec62d593dd1442851fe647f10f81701da58))
+* better error message if scheme forgotten in CLI `*_BASE_URL`/`--base-url` ([dc2c6a4](https://github.com/oregister/openregister-cli/commit/dc2c6a465fd7eb8c4e8caf06110a119672605f47))
+* binary-only parameters become CLI flags that take filenames only ([b44a04c](https://github.com/oregister/openregister-cli/commit/b44a04c0e4b6d0a640d1e2ed7bc302d10ac3c38f))
+
+
+### Bug Fixes
+
+* fall back to main branch if linking fails in CI ([d828452](https://github.com/oregister/openregister-cli/commit/d828452ffa84cf983892261ab2483fb791fd5926))
+* fix quoting typo ([18b4fac](https://github.com/oregister/openregister-cli/commit/18b4fac5c13bee6c4a47d963478f3801e49cf72c))
+
+
+### Chores
+
+* mark all CLI-related tests in Go with `t.Parallel()` ([8ad5740](https://github.com/oregister/openregister-cli/commit/8ad57409f88fec5653fb331f2abe64d1bc3b5201))
+* modify CLI tests to inject stdout so mutating `os.Stdout` isn't necessary ([d0bb945](https://github.com/oregister/openregister-cli/commit/d0bb94526adca83aa5a8e5ebaef5799df865a362))
+* switch some CLI Go tests from `os.Chdir` to `t.Chdir` ([ee444ba](https://github.com/oregister/openregister-cli/commit/ee444bad45ab0e7f1240ce5b2905f0fd11cbb340))
+
 ## 0.1.1 (2026-04-02)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/oregister/openregister-cli/compare/v0.1.0...v0.1.1)
