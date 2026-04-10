@@ -36,7 +36,7 @@ var searchFindCompaniesV1 = requestflag.WithInnerFlags(cli.Command{
 	Usage:   "Search for companies",
 	Suggest: true,
 	Flags: []cli.Flag{
-		&requestflag.Flag[[]any]{
+		&requestflag.Flag[[]map[string]any]{
 			Name:     "filter",
 			Usage:    "Filters to filter companies.\n",
 			BodyPath: "filters",
@@ -102,7 +102,7 @@ var searchFindPersonV1 = requestflag.WithInnerFlags(cli.Command{
 	Usage:   "Search for people",
 	Suggest: true,
 	Flags: []cli.Flag{
-		&requestflag.Flag[[]any]{
+		&requestflag.Flag[[]map[string]any]{
 			Name:     "filter",
 			Usage:    "Filters to filter people.\n",
 			BodyPath: "filters",
