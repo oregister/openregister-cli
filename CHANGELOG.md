@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.1 (2026-04-11)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/oregister/openregister-cli/compare/v0.2.0...v0.2.1)
+
+### Bug Fixes
+
+* **cli:** fix incompatible Go types for flag generated as array of maps ([052f8b5](https://github.com/oregister/openregister-cli/commit/052f8b5214227c5f1937d01864106b3f1e21bbf5))
+* fix for failing to drop invalid module replace in link script ([dd8a5f0](https://github.com/oregister/openregister-cli/commit/dd8a5f0e05c4815b82d9a8fc2fe3698f7b7f6890))
+
+
+### Chores
+
+* **cli:** additional test cases for `ShowJSONIterator` ([7bcaf2a](https://github.com/oregister/openregister-cli/commit/7bcaf2a397d1ece712ec50b906343d554a6d7d6d))
+* **cli:** let `--format raw` be used in conjunction with `--transform` ([bd09e98](https://github.com/oregister/openregister-cli/commit/bd09e98ba5abbb045cdf6749b53d6ee17e7f0308))
+
 ## 0.2.0 (2026-04-08)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/oregister/openregister-cli/compare/v0.1.1...v0.2.0)
