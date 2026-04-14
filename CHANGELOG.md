@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0 (2026-04-14)
+
+Full Changelog: [v0.2.2...v0.3.0](https://github.com/oregister/openregister-cli/compare/v0.2.2...v0.3.0)
+
+### Features
+
+* **api:** notarized_at & best_available ([464d60c](https://github.com/oregister/openregister-cli/commit/464d60ca76174afa9f84d7a159fd20959d83f008))
+
+
+### Chores
+
+* add documentation for ./scripts/link ([2f4eb5c](https://github.com/oregister/openregister-cli/commit/2f4eb5c8f1c200973de1cc07cf16bf6448c65146))
+
 ## 0.2.2 (2026-04-13)
 
 Full Changelog: [v0.2.1...v0.2.2](https://github.com/oregister/openregister-cli/compare/v0.2.1...v0.2.2)
