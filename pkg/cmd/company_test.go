@@ -78,6 +78,7 @@ func TestCompanyGetOwnersV1(t *testing.T) {
 			"--api-key", "string",
 			"company", "get-owners-v1",
 			"--company-id", "company_id",
+			"--best-available=true",
 			"--export=true",
 			"--realtime=true",
 		)

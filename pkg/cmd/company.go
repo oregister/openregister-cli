@@ -105,6 +105,11 @@ var companyGetOwnersV1 = cli.Command{
 			Required: true,
 		},
 		&requestflag.Flag[bool]{
+			Name:      "best-available",
+			Usage:     "When set to true, returns the best available owner data for AG and SE companies.\nThis data is extracted from Handelsregister documents and may not reflect the most current ownership state, as these\ndocument types are not filed on every ownership change.\nRequests for AG/SE companies without this flag return 404.\nNote: realtime and best_available cannot be used together at the moment.\n",
+			QueryPath: "best_available",
+		},
+		&requestflag.Flag[bool]{
 			Name:      "export",
 			Usage:     "Setting this to true will return the owners of the company if they exist\nbut will skip processing the documents in case they weren't processed yet.\n",
 			QueryPath: "export",
