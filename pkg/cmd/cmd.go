@@ -134,6 +134,23 @@ func init() {
 				},
 			},
 			{
+				Name:     "transparenzregister",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&transparenzregisterSetCredentialsV1,
+				},
+			},
+			{
+				Name:     "transparenzregister:request",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&transparenzregisterRequestCreateV1,
+					&transparenzregisterRequestGetV1,
+				},
+			},
+			{
 				Name:            "@manpages",
 				Usage:           "Generate documentation for 'man'",
 				UsageText:       "openregister @manpages [-o openregister.1] [--gzip]",
