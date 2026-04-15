@@ -169,8 +169,9 @@ func handleCompanyGetContactV0(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "company get-contact-v0", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "company get-contact-v0", obj, format, explicitFormat, transform)
 }
 
 func handleCompanyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
@@ -211,8 +212,9 @@ func handleCompanyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "company get-details-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "company get-details-v1", obj, format, explicitFormat, transform)
 }
 
 func handleCompanyGetFinancialsV1(ctx context.Context, cmd *cli.Command) error {
@@ -246,8 +248,9 @@ func handleCompanyGetFinancialsV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "company get-financials-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "company get-financials-v1", obj, format, explicitFormat, transform)
 }
 
 func handleCompanyGetHistoricalOwnersV1(ctx context.Context, cmd *cli.Command) error {
@@ -281,8 +284,9 @@ func handleCompanyGetHistoricalOwnersV1(ctx context.Context, cmd *cli.Command) e
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "company get-historical-owners-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "company get-historical-owners-v1", obj, format, explicitFormat, transform)
 }
 
 func handleCompanyGetHoldingsV1(ctx context.Context, cmd *cli.Command) error {
@@ -316,8 +320,9 @@ func handleCompanyGetHoldingsV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "company get-holdings-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "company get-holdings-v1", obj, format, explicitFormat, transform)
 }
 
 func handleCompanyGetOwnersV1(ctx context.Context, cmd *cli.Command) error {
@@ -358,8 +363,9 @@ func handleCompanyGetOwnersV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "company get-owners-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "company get-owners-v1", obj, format, explicitFormat, transform)
 }
 
 func handleCompanyGetUbosV1(ctx context.Context, cmd *cli.Command) error {
@@ -393,6 +399,7 @@ func handleCompanyGetUbosV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "company get-ubos-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "company get-ubos-v1", obj, format, explicitFormat, transform)
 }

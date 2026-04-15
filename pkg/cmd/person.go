@@ -74,8 +74,9 @@ func handlePersonGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "person get-details-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "person get-details-v1", obj, format, explicitFormat, transform)
 }
 
 func handlePersonGetHoldingsV1(ctx context.Context, cmd *cli.Command) error {
@@ -109,6 +110,7 @@ func handlePersonGetHoldingsV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "person get-holdings-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "person get-holdings-v1", obj, format, explicitFormat, transform)
 }

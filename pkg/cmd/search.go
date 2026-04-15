@@ -187,8 +187,9 @@ func handleSearchAutocompleteCompaniesV1(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "search autocomplete-companies-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "search autocomplete-companies-v1", obj, format, explicitFormat, transform)
 }
 
 func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
@@ -221,8 +222,9 @@ func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "search find-companies-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "search find-companies-v1", obj, format, explicitFormat, transform)
 }
 
 func handleSearchFindPersonV1(ctx context.Context, cmd *cli.Command) error {
@@ -255,8 +257,9 @@ func handleSearchFindPersonV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "search find-person-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "search find-person-v1", obj, format, explicitFormat, transform)
 }
 
 func handleSearchLookupCompanyByURL(ctx context.Context, cmd *cli.Command) error {
@@ -289,6 +292,7 @@ func handleSearchLookupCompanyByURL(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "search lookup-company-by-url", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "search lookup-company-by-url", obj, format, explicitFormat, transform)
 }

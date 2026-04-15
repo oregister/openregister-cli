@@ -81,8 +81,9 @@ func handleDocumentGetCachedV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "document get-cached-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "document get-cached-v1", obj, format, explicitFormat, transform)
 }
 
 func handleDocumentGetRealtimeV1(ctx context.Context, cmd *cli.Command) error {
@@ -115,6 +116,7 @@ func handleDocumentGetRealtimeV1(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "document get-realtime-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "document get-realtime-v1", obj, format, explicitFormat, transform)
 }
