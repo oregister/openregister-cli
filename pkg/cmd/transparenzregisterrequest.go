@@ -79,8 +79,9 @@ func handleTransparenzregisterRequestCreateV1(ctx context.Context, cmd *cli.Comm
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "transparenzregister:request create-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "transparenzregister:request create-v1", obj, format, explicitFormat, transform)
 }
 
 func handleTransparenzregisterRequestGetV1(ctx context.Context, cmd *cli.Command) error {
@@ -114,6 +115,7 @@ func handleTransparenzregisterRequestGetV1(ctx context.Context, cmd *cli.Command
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "transparenzregister:request get-v1", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "transparenzregister:request get-v1", obj, format, explicitFormat, transform)
 }

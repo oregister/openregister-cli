@@ -96,8 +96,9 @@ func handleMonitorCreate(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "monitor create", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "monitor create", obj, format, explicitFormat, transform)
 }
 
 func handleMonitorList(ctx context.Context, cmd *cli.Command) error {
@@ -128,8 +129,9 @@ func handleMonitorList(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "monitor list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "monitor list", obj, format, explicitFormat, transform)
 }
 
 func handleMonitorDelete(ctx context.Context, cmd *cli.Command) error {
