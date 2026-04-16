@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/oregister/openregister-cli/internal/apiquery"
 	"github.com/oregister/openregister-cli/internal/requestflag"
@@ -171,7 +170,12 @@ func handleCompanyGetContactV0(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "company get-contact-v0", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "company get-contact-v0",
+		Transform:      transform,
+	})
 }
 
 func handleCompanyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
@@ -214,7 +218,12 @@ func handleCompanyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "company get-details-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "company get-details-v1",
+		Transform:      transform,
+	})
 }
 
 func handleCompanyGetFinancialsV1(ctx context.Context, cmd *cli.Command) error {
@@ -250,7 +259,12 @@ func handleCompanyGetFinancialsV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "company get-financials-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "company get-financials-v1",
+		Transform:      transform,
+	})
 }
 
 func handleCompanyGetHistoricalOwnersV1(ctx context.Context, cmd *cli.Command) error {
@@ -286,7 +300,12 @@ func handleCompanyGetHistoricalOwnersV1(ctx context.Context, cmd *cli.Command) e
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "company get-historical-owners-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "company get-historical-owners-v1",
+		Transform:      transform,
+	})
 }
 
 func handleCompanyGetHoldingsV1(ctx context.Context, cmd *cli.Command) error {
@@ -322,7 +341,12 @@ func handleCompanyGetHoldingsV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "company get-holdings-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "company get-holdings-v1",
+		Transform:      transform,
+	})
 }
 
 func handleCompanyGetOwnersV1(ctx context.Context, cmd *cli.Command) error {
@@ -365,7 +389,12 @@ func handleCompanyGetOwnersV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "company get-owners-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "company get-owners-v1",
+		Transform:      transform,
+	})
 }
 
 func handleCompanyGetUbosV1(ctx context.Context, cmd *cli.Command) error {
@@ -401,5 +430,10 @@ func handleCompanyGetUbosV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "company get-ubos-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "company get-ubos-v1",
+		Transform:      transform,
+	})
 }
