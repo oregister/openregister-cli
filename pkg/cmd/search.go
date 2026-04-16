@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/oregister/openregister-cli/internal/apiquery"
 	"github.com/oregister/openregister-cli/internal/requestflag"
@@ -189,7 +188,12 @@ func handleSearchAutocompleteCompaniesV1(ctx context.Context, cmd *cli.Command) 
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "search autocomplete-companies-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "search autocomplete-companies-v1",
+		Transform:      transform,
+	})
 }
 
 func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
@@ -224,7 +228,12 @@ func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "search find-companies-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "search find-companies-v1",
+		Transform:      transform,
+	})
 }
 
 func handleSearchFindPersonV1(ctx context.Context, cmd *cli.Command) error {
@@ -259,7 +268,12 @@ func handleSearchFindPersonV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "search find-person-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "search find-person-v1",
+		Transform:      transform,
+	})
 }
 
 func handleSearchLookupCompanyByURL(ctx context.Context, cmd *cli.Command) error {
@@ -294,5 +308,10 @@ func handleSearchLookupCompanyByURL(ctx context.Context, cmd *cli.Command) error
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "search lookup-company-by-url", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "search lookup-company-by-url",
+		Transform:      transform,
+	})
 }

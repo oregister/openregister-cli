@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/oregister/openregister-cli/internal/apiquery"
 	"github.com/oregister/openregister-cli/internal/requestflag"
@@ -83,7 +82,12 @@ func handleDocumentGetCachedV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "document get-cached-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "document get-cached-v1",
+		Transform:      transform,
+	})
 }
 
 func handleDocumentGetRealtimeV1(ctx context.Context, cmd *cli.Command) error {
@@ -118,5 +122,10 @@ func handleDocumentGetRealtimeV1(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "document get-realtime-v1", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "document get-realtime-v1",
+		Transform:      transform,
+	})
 }
