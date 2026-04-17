@@ -17,7 +17,7 @@ func TestTransparenzregisterSetCredentialsV1(t *testing.T) {
 			"transparenzregister", "set-credentials-v1",
 			"--password", "password",
 			"--username", "username",
-			"--credential-label", "credential_label",
+			"--name", "name",
 		)
 	})
 
@@ -26,7 +26,7 @@ func TestTransparenzregisterSetCredentialsV1(t *testing.T) {
 		pipeData := []byte("" +
 			"password: password\n" +
 			"username: username\n" +
-			"credential_label: credential_label\n")
+			"name: name\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",

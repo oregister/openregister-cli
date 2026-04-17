@@ -14,7 +14,7 @@ import (
 
 var transparenzregisterSetCredentialsV1 = cli.Command{
 	Name:    "set-credentials-v1",
-	Usage:   "Store username and password credentials for accessing the Transparenzregister\nAPI. These credentials will be used for subsequent requests to retrieve company\ndocuments.",
+	Usage:   "Store username and password credentials for accessing the Transparenzregister\nAPI. These credentials will be used for subsequent requests to retrieve company\ndocuments. Credential names are user-scoped; the reserved name `sandbox` cannot\nbe used. Credentials are validated against Transparenzregister before they are\npersisted.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -25,15 +25,15 @@ var transparenzregisterSetCredentialsV1 = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "username",
-			Usage:    "Username for Transparenzregister API access.\nExample: \"testnutzer-eis@transparenzregister.de\"\n",
+			Usage:    "Username for Transparenzregister API access.\nExample: \"compliance@example.com\"\n",
 			Required: true,
 			BodyPath: "username",
 		},
 		&requestflag.Flag[string]{
-			Name:     "credential-label",
-			Usage:    "Label to identify this set of credentials. Allows storing multiple\nTransparenzregister credentials per user (e.g., for different accounts\nor clients). Defaults to 'default' if not provided.\nExample: \"client_a\"\n",
+			Name:     "name",
+			Usage:    "Name to identify this set of credentials. Allows storing multiple\nTransparenzregister credentials per user (e.g., for different accounts\nor clients). Defaults to 'default' if not provided.\nCannot be `sandbox` because that name is reserved for test-mode extracts.\nExample: \"client_a\"\n",
 			Default:  "default",
-			BodyPath: "credential_label",
+			BodyPath: "name",
 		},
 	},
 	Action:          handleTransparenzregisterSetCredentialsV1,
