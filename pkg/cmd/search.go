@@ -191,6 +191,7 @@ func handleSearchAutocompleteCompaniesV1(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "search autocomplete-companies-v1",
 		Transform:      transform,
 	})
@@ -231,6 +232,7 @@ func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "search find-companies-v1",
 		Transform:      transform,
 	})
@@ -271,6 +273,7 @@ func handleSearchFindPersonV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "search find-person-v1",
 		Transform:      transform,
 	})
@@ -311,6 +314,7 @@ func handleSearchLookupCompanyByURL(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "search lookup-company-by-url",
 		Transform:      transform,
 	})

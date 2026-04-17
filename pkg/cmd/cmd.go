@@ -73,6 +73,11 @@ func init() {
 				Name:  "transform-error",
 				Usage: "The GJSON transformation for errors.",
 			},
+			&cli.BoolFlag{
+				Name:    "raw-output",
+				Aliases: []string{"r"},
+				Usage:   "If the result is a string, print it without JSON quotes. This can be useful for making output transforms talk to non-JSON-based systems.",
+			},
 			&requestflag.Flag[string]{
 				Name:    "api-key",
 				Usage:   "API Key Authentication\nProvide your API key as a Bearer token in the Authorization header.\n",
