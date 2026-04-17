@@ -173,6 +173,7 @@ func handleCompanyGetContactV0(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "company get-contact-v0",
 		Transform:      transform,
 	})
@@ -221,6 +222,7 @@ func handleCompanyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "company get-details-v1",
 		Transform:      transform,
 	})
@@ -262,6 +264,7 @@ func handleCompanyGetFinancialsV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "company get-financials-v1",
 		Transform:      transform,
 	})
@@ -303,6 +306,7 @@ func handleCompanyGetHistoricalOwnersV1(ctx context.Context, cmd *cli.Command) e
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "company get-historical-owners-v1",
 		Transform:      transform,
 	})
@@ -344,6 +348,7 @@ func handleCompanyGetHoldingsV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "company get-holdings-v1",
 		Transform:      transform,
 	})
@@ -392,6 +397,7 @@ func handleCompanyGetOwnersV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "company get-owners-v1",
 		Transform:      transform,
 	})
@@ -433,6 +439,7 @@ func handleCompanyGetUbosV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "company get-ubos-v1",
 		Transform:      transform,
 	})

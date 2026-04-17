@@ -85,6 +85,7 @@ func handleDocumentGetCachedV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "document get-cached-v1",
 		Transform:      transform,
 	})
@@ -125,6 +126,7 @@ func handleDocumentGetRealtimeV1(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "document get-realtime-v1",
 		Transform:      transform,
 	})

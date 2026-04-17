@@ -83,6 +83,7 @@ func handleTransparenzregisterRequestCreateV1(ctx context.Context, cmd *cli.Comm
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "transparenzregister:request create-v1",
 		Transform:      transform,
 	})
@@ -124,6 +125,7 @@ func handleTransparenzregisterRequestGetV1(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "transparenzregister:request get-v1",
 		Transform:      transform,
 	})
