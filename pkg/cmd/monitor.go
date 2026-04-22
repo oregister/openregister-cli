@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/oregister/openregister-cli/internal/apiquery"
 	"github.com/oregister/openregister-cli/internal/requestflag"
@@ -96,8 +95,15 @@ func handleMonitorCreate(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "monitor create", obj, format, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
+		Title:          "monitor create",
+		Transform:      transform,
+	})
 }
 
 func handleMonitorList(ctx context.Context, cmd *cli.Command) error {
@@ -128,8 +134,15 @@ func handleMonitorList(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "monitor list", obj, format, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
+		Title:          "monitor list",
+		Transform:      transform,
+	})
 }
 
 func handleMonitorDelete(ctx context.Context, cmd *cli.Command) error {

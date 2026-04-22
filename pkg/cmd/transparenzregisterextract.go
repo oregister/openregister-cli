@@ -14,46 +14,86 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var documentGetCachedV1 = cli.Command{
-	Name:    "get-cached-v1",
-	Usage:   "Get document information",
+var transparenzregisterExtractCreateV1 = cli.Command{
+	Name:    "create-v1",
+	Usage:   "Submit a Transparenzregister extract request and return an extract resource with\nprocessing status.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "document-id",
+			Name:     "company-id",
+			Usage:    "Unique company identifier.\nRequired unless `X-Credential-Name` is set to `sandbox`.\nIn sandbox mode this field should be omitted.\nExample: DE-HRB-F1103-267645\n",
+			BodyPath: "company_id",
+		},
+		&requestflag.Flag[string]{
+			Name:       "x-credential-name",
+			Default:    "default",
+			HeaderPath: "X-Credential-Name",
+		},
+	},
+	Action:          handleTransparenzregisterExtractCreateV1,
+	HideHelpCommand: true,
+}
+
+var transparenzregisterExtractGetV1 = cli.Command{
+	Name:    "get-v1",
+	Usage:   "Get the results of a Transparenzregister extract request. This endpoint handles\nall internal complexity including polling request status, selecting all\navailable documents, creating Transparenzregister baskets, and returning\ndownload URLs when ready. If the request is still processing, it will return a\npending status. Polling reuses the credential mode stored on the extract at\ncreate time. Sandbox extracts keep using the Transparenzregister test client\nautomatically; no credential header is accepted on this endpoint.",
+	Suggest: true,
+	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:     "extract-id",
 			Required: true,
 		},
 	},
-	Action:          handleDocumentGetCachedV1,
+	Action:          handleTransparenzregisterExtractGetV1,
 	HideHelpCommand: true,
 }
 
-var documentGetRealtimeV1 = cli.Command{
-	Name:    "get-realtime-v1",
-	Usage:   "Fetch a document in realtime.",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "company-id",
-			Required:  true,
-			QueryPath: "company_id",
-		},
-		&requestflag.Flag[string]{
-			Name:      "document-category",
-			Usage:     `Allowed values: "current_printout", "chronological_printout", "historical_printout", "structured_information", "shareholder_list", "articles_of_association".`,
-			Required:  true,
-			QueryPath: "document_category",
-		},
-	},
-	Action:          handleDocumentGetRealtimeV1,
-	HideHelpCommand: true,
-}
-
-func handleDocumentGetCachedV1(ctx context.Context, cmd *cli.Command) error {
+func handleTransparenzregisterExtractCreateV1(ctx context.Context, cmd *cli.Command) error {
 	client := openregister.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
-	if !cmd.IsSet("document-id") && len(unusedArgs) > 0 {
-		cmd.Set("document-id", unusedArgs[0])
+
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	params := openregister.TransparenzregisterExtractNewV1Params{}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatBrackets,
+		apiquery.ArrayQueryFormatComma,
+		ApplicationJSON,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.Transparenzregister.Extract.NewV1(ctx, params, options...)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
+		Title:          "transparenzregister:extract create-v1",
+		Transform:      transform,
+	})
+}
+
+func handleTransparenzregisterExtractGetV1(ctx context.Context, cmd *cli.Command) error {
+	client := openregister.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+	if !cmd.IsSet("extract-id") && len(unusedArgs) > 0 {
+		cmd.Set("extract-id", unusedArgs[0])
 		unusedArgs = unusedArgs[1:]
 	}
 	if len(unusedArgs) > 0 {
@@ -73,7 +113,7 @@ func handleDocumentGetCachedV1(ctx context.Context, cmd *cli.Command) error {
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Document.GetCachedV1(ctx, cmd.Value("document-id").(string), options...)
+	_, err = client.Transparenzregister.Extract.GetV1(ctx, cmd.Value("extract-id").(string), options...)
 	if err != nil {
 		return err
 	}
@@ -86,48 +126,7 @@ func handleDocumentGetCachedV1(ctx context.Context, cmd *cli.Command) error {
 		ExplicitFormat: explicitFormat,
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "document get-cached-v1",
-		Transform:      transform,
-	})
-}
-
-func handleDocumentGetRealtimeV1(ctx context.Context, cmd *cli.Command) error {
-	client := openregister.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	params := openregister.DocumentGetRealtimeV1Params{}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Document.GetRealtimeV1(ctx, params, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "document get-realtime-v1",
+		Title:          "transparenzregister:extract get-v1",
 		Transform:      transform,
 	})
 }
