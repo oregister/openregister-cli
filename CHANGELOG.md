@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.4.0 (2026-04-22)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/oregister/openregister-cli/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** transparenzregister ([4ea6bfe](https://github.com/oregister/openregister-cli/commit/4ea6bfedc82475713810e50c07a660e69661ebd0))
+* **api:** transparenzregister ([3359632](https://github.com/oregister/openregister-cli/commit/33596328a8e0a812f00ce82c25652f95cae632cd))
+* **api:** transparenzregister endpoints ([bf5d36f](https://github.com/oregister/openregister-cli/commit/bf5d36f769fbe8b0c71cb34df6ee551d0d198959))
+* **api:** transparenzregister endpoints ([b72c703](https://github.com/oregister/openregister-cli/commit/b72c70322ec12c127b67f7530966c439d85a53b0))
+* **cli:** add `--raw-output`/`-r` option to print raw (non-JSON) strings ([f03ce10](https://github.com/oregister/openregister-cli/commit/f03ce10334fc8da3caf2ae1171d04c548f90d280))
+* **cli:** alias parameters in data with `x-stainless-cli-data-alias` ([96de518](https://github.com/oregister/openregister-cli/commit/96de518633484ec4251884e7c406b31987486167))
+* **cli:** send filename and content type when reading input from files ([58243d3](https://github.com/oregister/openregister-cli/commit/58243d3f09417921d0f07ccd1a1113228beddf05))
+
+
+### Chores
+
+* **ci:** support manually triggering release workflow ([519d2ab](https://github.com/oregister/openregister-cli/commit/519d2ab6ff13c65f513c544d1eb2a9373c0460d3))
+* **cli:** fall back to JSON when using default "explore" with non-TTY ([98bc74d](https://github.com/oregister/openregister-cli/commit/98bc74d3a263152a4dfb05ff60b616bf385664db))
+* **cli:** switch long lists of positional args over to param structs ([991ef2d](https://github.com/oregister/openregister-cli/commit/991ef2db18f1a9c04b88f272553589df269ec0c4))
+* **cli:** use `ShowJSONOpts` as argument to `formatJSON` instead of many positionals ([7e2e8ee](https://github.com/oregister/openregister-cli/commit/7e2e8eecc76478085462748bbe02113117097e21))
+* **internal:** codegen related update ([2dbf441](https://github.com/oregister/openregister-cli/commit/2dbf4418649c9a8ebad3d59b6c4603021b38f2d6))
+
 ## 0.3.0 (2026-04-14)
 
 Full Changelog: [v0.2.2...v0.3.0](https://github.com/oregister/openregister-cli/compare/v0.2.2...v0.3.0)
