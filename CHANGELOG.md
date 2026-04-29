@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.1 (2026-04-29)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/oregister/openregister-cli/compare/v0.4.0...v0.4.1)
+
+### Chores
+
+* **internal:** codegen related update ([c8c5f58](https://github.com/oregister/openregister-cli/commit/c8c5f58088cd792599dbfc3aed66354e6af07115))
+* **internal:** codegen related update ([a98ea1b](https://github.com/oregister/openregister-cli/commit/a98ea1b54111759a03951b7b5ead83657bd2a3be))
+* **internal:** more robust bootstrap script ([24bbe0a](https://github.com/oregister/openregister-cli/commit/24bbe0a16314d9abea5f2178308fc525bdf42e30))
+
 ## 0.4.0 (2026-04-22)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/oregister/openregister-cli/compare/v0.3.0...v0.4.0)
