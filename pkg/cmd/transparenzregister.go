@@ -8,7 +8,7 @@ import (
 
 	"github.com/oregister/openregister-cli/internal/apiquery"
 	"github.com/oregister/openregister-cli/internal/requestflag"
-	"github.com/oregister/openregister-go"
+	"github.com/oregister/openregister-go/v2"
 	"github.com/urfave/cli/v3"
 )
 
