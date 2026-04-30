@@ -5,12 +5,12 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 # Mark the necessary Go modules as private to avoid Go's proxy
-export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/oregister/openregister-go,github.com/stainless-sdks/openregister-go"
+export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/oregister/openregister-go/v2,github.com/stainless-sdks/openregister-go/v2"
 
 REPLACEMENT="${1:-"../openregister-go"}"
 echo "==> Replacing Go SDK with $REPLACEMENT"
 if [[ -d "$REPLACEMENT" ]] || go list -m "$REPLACEMENT" >/dev/null; then
-    go mod edit -replace github.com/oregister/openregister-go="$REPLACEMENT"
+    go mod edit -replace github.com/oregister/openregister-go/v2="$REPLACEMENT"
     go mod tidy -e
 else
     echo "Skipping Go SDK replacement (branch may not exist on Go SDK)"
