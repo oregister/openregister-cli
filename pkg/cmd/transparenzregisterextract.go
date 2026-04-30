@@ -40,8 +40,9 @@ var transparenzregisterExtractGetV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "extract-id",
-			Required: true,
+			Name:      "extract-id",
+			Required:  true,
+			PathParam: "extract_id",
 		},
 	},
 	Action:          handleTransparenzregisterExtractGetV1,
@@ -56,8 +57,6 @@ func handleTransparenzregisterExtractCreateV1(ctx context.Context, cmd *cli.Comm
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.TransparenzregisterExtractNewV1Params{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -68,6 +67,8 @@ func handleTransparenzregisterExtractCreateV1(ctx context.Context, cmd *cli.Comm
 	if err != nil {
 		return err
 	}
+
+	params := openregister.TransparenzregisterExtractNewV1Params{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

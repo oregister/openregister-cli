@@ -20,8 +20,9 @@ var companyGetContactV0 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "company-id",
-			Required: true,
+			Name:      "company-id",
+			Required:  true,
+			PathParam: "company_id",
 		},
 	},
 	Action:          handleCompanyGetContactV0,
@@ -34,8 +35,9 @@ var companyGetDetailsV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "company-id",
-			Required: true,
+			Name:      "company-id",
+			Required:  true,
+			PathParam: "company_id",
 		},
 		&requestflag.Flag[bool]{
 			Name:      "export",
@@ -58,8 +60,9 @@ var companyGetFinancialsV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "company-id",
-			Required: true,
+			Name:      "company-id",
+			Required:  true,
+			PathParam: "company_id",
 		},
 	},
 	Action:          handleCompanyGetFinancialsV1,
@@ -72,8 +75,9 @@ var companyGetHistoricalOwnersV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "company-id",
-			Required: true,
+			Name:      "company-id",
+			Required:  true,
+			PathParam: "company_id",
 		},
 	},
 	Action:          handleCompanyGetHistoricalOwnersV1,
@@ -86,8 +90,9 @@ var companyGetHoldingsV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "company-id",
-			Required: true,
+			Name:      "company-id",
+			Required:  true,
+			PathParam: "company_id",
 		},
 	},
 	Action:          handleCompanyGetHoldingsV1,
@@ -100,8 +105,9 @@ var companyGetOwnersV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "company-id",
-			Required: true,
+			Name:      "company-id",
+			Required:  true,
+			PathParam: "company_id",
 		},
 		&requestflag.Flag[bool]{
 			Name:      "best-available",
@@ -129,8 +135,9 @@ var companyGetUbosV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "company-id",
-			Required: true,
+			Name:      "company-id",
+			Required:  true,
+			PathParam: "company_id",
 		},
 	},
 	Action:          handleCompanyGetUbosV1,
@@ -190,8 +197,6 @@ func handleCompanyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.CompanyGetDetailsV1Params{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -202,6 +207,8 @@ func handleCompanyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := openregister.CompanyGetDetailsV1Params{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -365,8 +372,6 @@ func handleCompanyGetOwnersV1(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.CompanyGetOwnersV1Params{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -377,6 +382,8 @@ func handleCompanyGetOwnersV1(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := openregister.CompanyGetOwnersV1Params{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
