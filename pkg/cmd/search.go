@@ -164,8 +164,6 @@ func handleSearchAutocompleteCompaniesV1(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.SearchAutocompleteCompaniesV1Params{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -176,6 +174,8 @@ func handleSearchAutocompleteCompaniesV1(ctx context.Context, cmd *cli.Command) 
 	if err != nil {
 		return err
 	}
+
+	params := openregister.SearchAutocompleteCompaniesV1Params{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -205,8 +205,6 @@ func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.SearchFindCompaniesV1Params{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -217,6 +215,8 @@ func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := openregister.SearchFindCompaniesV1Params{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -246,8 +246,6 @@ func handleSearchFindPersonV1(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.SearchFindPersonV1Params{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -258,6 +256,8 @@ func handleSearchFindPersonV1(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := openregister.SearchFindPersonV1Params{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -287,8 +287,6 @@ func handleSearchLookupCompanyByURL(ctx context.Context, cmd *cli.Command) error
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.SearchLookupCompanyByURLParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -299,6 +297,8 @@ func handleSearchLookupCompanyByURL(ctx context.Context, cmd *cli.Command) error
 	if err != nil {
 		return err
 	}
+
+	params := openregister.SearchLookupCompanyByURLParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

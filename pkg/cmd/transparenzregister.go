@@ -48,8 +48,6 @@ func handleTransparenzregisterSetCredentialsV1(ctx context.Context, cmd *cli.Com
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.TransparenzregisterSetCredentialsV1Params{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -60,6 +58,8 @@ func handleTransparenzregisterSetCredentialsV1(ctx context.Context, cmd *cli.Com
 	if err != nil {
 		return err
 	}
+
+	params := openregister.TransparenzregisterSetCredentialsV1Params{}
 
 	return client.Transparenzregister.SetCredentialsV1(ctx, params, options...)
 }

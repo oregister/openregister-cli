@@ -20,8 +20,9 @@ var personGetDetailsV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "person-id",
-			Required: true,
+			Name:      "person-id",
+			Required:  true,
+			PathParam: "person_id",
 		},
 	},
 	Action:          handlePersonGetDetailsV1,
@@ -34,8 +35,9 @@ var personGetHoldingsV1 = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "person-id",
-			Required: true,
+			Name:      "person-id",
+			Required:  true,
+			PathParam: "person_id",
 		},
 	},
 	Action:          handlePersonGetHoldingsV1,

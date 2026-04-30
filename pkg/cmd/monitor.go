@@ -57,8 +57,9 @@ var monitorDelete = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "entity-id",
-			Required: true,
+			Name:      "entity-id",
+			Required:  true,
+			PathParam: "entity_id",
 		},
 	},
 	Action:          handleMonitorDelete,
@@ -73,8 +74,6 @@ func handleMonitorCreate(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := openregister.MonitorNewParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -85,6 +84,8 @@ func handleMonitorCreate(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := openregister.MonitorNewParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
