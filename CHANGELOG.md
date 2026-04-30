@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.5.0 (2026-04-30)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/oregister/openregister-cli/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* support passing path and query params over stdin ([66c0ae1](https://github.com/oregister/openregister-cli/commit/66c0ae1141b281ac3997e83bd4a2550ff6d2edd8))
+
+
+### Bug Fixes
+
+* **cli:** correctly load zsh autocompletion ([60effc1](https://github.com/oregister/openregister-cli/commit/60effc16bf2452201c181e478eab09bd23a019e8))
+* flags for nullable body scalar fields are strictly typed ([326c308](https://github.com/oregister/openregister-cli/commit/326c308d388b8328ebb84e151eef5d53b23bf2a8))
+
+
+### Chores
+
+* **internal:** codegen related update ([c8c5f58](https://github.com/oregister/openregister-cli/commit/c8c5f58088cd792599dbfc3aed66354e6af07115))
+* **internal:** codegen related update ([a98ea1b](https://github.com/oregister/openregister-cli/commit/a98ea1b54111759a03951b7b5ead83657bd2a3be))
+* **internal:** more robust bootstrap script ([24bbe0a](https://github.com/oregister/openregister-cli/commit/24bbe0a16314d9abea5f2178308fc525bdf42e30))
+
 ## 0.4.0 (2026-04-22)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/oregister/openregister-cli/compare/v0.3.0...v0.4.0)
