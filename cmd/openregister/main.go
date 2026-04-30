@@ -11,7 +11,7 @@ import (
 	"slices"
 
 	"github.com/oregister/openregister-cli/pkg/cmd"
-	"github.com/oregister/openregister-go/v2"
+	"github.com/oregister/openregister-go"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
