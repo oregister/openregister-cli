@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.1 (2026-05-13)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/oregister/openregister-cli/compare/v0.5.0...v0.5.1)
+
+### Chores
+
+* avoid embedding reflect.Type for dead code elimination ([95a6870](https://github.com/oregister/openregister-cli/commit/95a68708beda4ba97b448fd4a08e0c6ee7a22c0c))
+* **internal:** codegen related update ([4d41962](https://github.com/oregister/openregister-cli/commit/4d4196298a64023a7a9f39859fdcb58028d05a7a))
+* **internal:** codegen related update ([deb2afd](https://github.com/oregister/openregister-cli/commit/deb2afda57f58ed8068faa84c302014dbe93e787))
+* redact api-key headers in debug logs ([c2d02cc](https://github.com/oregister/openregister-cli/commit/c2d02cc7c09c2a78edae2008dd1ad2bb27585657))
+
 ## 0.5.0 (2026-04-30)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/oregister/openregister-cli/compare/v0.4.0...v0.5.0)
