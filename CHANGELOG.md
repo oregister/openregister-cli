@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.2 (2026-05-14)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/oregister/openregister-cli/compare/v0.5.1...v0.5.2)
+
+### Chores
+
+* **internal:** codegen related update ([f719667](https://github.com/oregister/openregister-cli/commit/f719667dc39d3740a003d1f20cacd532426a2c48))
+
 ## 0.5.1 (2026-05-13)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/oregister/openregister-cli/compare/v0.5.0...v0.5.1)
