@@ -92,6 +92,7 @@ func init() {
 				Commands: []*cli.Command{
 					&searchAutocompleteCompaniesV1,
 					&searchFindCompaniesV1,
+					&searchFindInsolvenciesV1,
 					&searchFindPersonV1,
 					&searchLookupCompanyByURL,
 				},
@@ -153,6 +154,22 @@ func init() {
 				Commands: []*cli.Command{
 					&transparenzregisterExtractCreateV1,
 					&transparenzregisterExtractGetV1,
+				},
+			},
+			{
+				Name:     "credits",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&creditsGet,
+				},
+			},
+			{
+				Name:     "insolvency",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&insolvencyRetrieve,
 				},
 			},
 			{

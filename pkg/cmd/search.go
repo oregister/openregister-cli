@@ -96,6 +96,50 @@ var searchFindCompaniesV1 = requestflag.WithInnerFlags(cli.Command{
 	},
 })
 
+var searchFindInsolvenciesV1 = requestflag.WithInnerFlags(cli.Command{
+	Name:    "find-insolvencies-v1",
+	Usage:   "Search for insolvency proceedings",
+	Suggest: true,
+	Flags: []cli.Flag{
+		&requestflag.Flag[[]map[string]any]{
+			Name:     "filter",
+			Usage:    "Filters to filter insolvency proceedings.\n",
+			BodyPath: "filters",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "pagination",
+			BodyPath: "pagination",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "query",
+			Usage:    "Search query to filter insolvency proceedings.\n",
+			BodyPath: "query",
+		},
+	},
+	Action:          handleSearchFindInsolvenciesV1,
+	HideHelpCommand: true,
+}, map[string][]requestflag.HasOuterFlag{
+	"pagination": {
+		&requestflag.InnerFlag[int64]{
+			Name:       "pagination.page",
+			Usage:      "Page number to return.\n",
+			InnerField: "page",
+		},
+		&requestflag.InnerFlag[int64]{
+			Name:       "pagination.per-page",
+			Usage:      "Number of results per page.\n",
+			InnerField: "per_page",
+		},
+	},
+	"query": {
+		&requestflag.InnerFlag[string]{
+			Name:       "query.value",
+			Usage:      "Search query to filter insolvency proceedings.\nMatches against debtor name, case number, administrator name and court.\n",
+			InnerField: "value",
+		},
+	},
+})
+
 var searchFindPersonV1 = requestflag.WithInnerFlags(cli.Command{
 	Name:    "find-person-v1",
 	Usage:   "Search for people",
@@ -234,6 +278,47 @@ func handleSearchFindCompaniesV1(ctx context.Context, cmd *cli.Command) error {
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "search find-companies-v1",
+		Transform:      transform,
+	})
+}
+
+func handleSearchFindInsolvenciesV1(ctx context.Context, cmd *cli.Command) error {
+	client := openregister.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatBrackets,
+		apiquery.ArrayQueryFormatComma,
+		ApplicationJSON,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	params := openregister.SearchFindInsolvenciesV1Params{}
+
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.Search.FindInsolvenciesV1(ctx, params, options...)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
+		Title:          "search find-insolvencies-v1",
 		Transform:      transform,
 	})
 }
