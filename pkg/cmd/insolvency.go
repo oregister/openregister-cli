@@ -14,8 +14,8 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var insolvencyRetrieve = cli.Command{
-	Name:    "retrieve",
+var insolvencyGetDetailsV1 = cli.Command{
+	Name:    "get-details-v1",
 	Usage:   "Get detailed insolvency proceeding information",
 	Suggest: true,
 	Flags: []cli.Flag{
@@ -25,11 +25,11 @@ var insolvencyRetrieve = cli.Command{
 			PathParam: "insolvency_id",
 		},
 	},
-	Action:          handleInsolvencyRetrieve,
+	Action:          handleInsolvencyGetDetailsV1,
 	HideHelpCommand: true,
 }
 
-func handleInsolvencyRetrieve(ctx context.Context, cmd *cli.Command) error {
+func handleInsolvencyGetDetailsV1(ctx context.Context, cmd *cli.Command) error {
 	client := openregister.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
 	if !cmd.IsSet("insolvency-id") && len(unusedArgs) > 0 {
@@ -53,7 +53,7 @@ func handleInsolvencyRetrieve(ctx context.Context, cmd *cli.Command) error {
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Insolvency.Get(ctx, cmd.Value("insolvency-id").(string), options...)
+	_, err = client.Insolvency.GetDetailsV1(ctx, cmd.Value("insolvency-id").(string), options...)
 	if err != nil {
 		return err
 	}
@@ -66,7 +66,7 @@ func handleInsolvencyRetrieve(ctx context.Context, cmd *cli.Command) error {
 		ExplicitFormat: explicitFormat,
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "insolvency retrieve",
+		Title:          "insolvency get-details-v1",
 		Transform:      transform,
 	})
 }

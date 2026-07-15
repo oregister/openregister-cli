@@ -157,11 +157,11 @@ func init() {
 				},
 			},
 			{
-				Name:     "credits",
+				Name:     "usage",
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
-					&creditsGet,
+					&usageGetUsageV1,
 				},
 			},
 			{
@@ -169,7 +169,7 @@ func init() {
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
-					&insolvencyRetrieve,
+					&insolvencyGetDetailsV1,
 				},
 			},
 			{
