@@ -161,7 +161,7 @@ func init() {
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
-					&usageGetUsageV1,
+					&usageGetCreditsV1,
 				},
 			},
 			{
