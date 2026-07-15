@@ -13,16 +13,16 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var creditsGet = cli.Command{
-	Name:            "get",
+var usageGetUsageV1 = cli.Command{
+	Name:            "get-usage-v1",
 	Usage:           "Retrieve public API credit usage",
 	Suggest:         true,
 	Flags:           []cli.Flag{},
-	Action:          handleCreditsGet,
+	Action:          handleUsageGetUsageV1,
 	HideHelpCommand: true,
 }
 
-func handleCreditsGet(ctx context.Context, cmd *cli.Command) error {
+func handleUsageGetUsageV1(ctx context.Context, cmd *cli.Command) error {
 	client := openregister.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
 
@@ -43,7 +43,7 @@ func handleCreditsGet(ctx context.Context, cmd *cli.Command) error {
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Credits.Get(ctx, options...)
+	_, err = client.Usage.GetUsageV1(ctx, options...)
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func handleCreditsGet(ctx context.Context, cmd *cli.Command) error {
 		ExplicitFormat: explicitFormat,
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "credits get",
+		Title:          "usage get-usage-v1",
 		Transform:      transform,
 	})
 }

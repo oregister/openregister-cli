@@ -8,13 +8,13 @@ import (
 	"github.com/oregister/openregister-cli/internal/mocktest"
 )
 
-func TestInsolvencyRetrieve(t *testing.T) {
+func TestInsolvencyGetDetailsV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
 			t,
 			"--api-key", "string",
-			"insolvency", "retrieve",
+			"insolvency", "get-details-v1",
 			"--insolvency-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
