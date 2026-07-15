@@ -8,13 +8,13 @@ import (
 	"github.com/oregister/openregister-cli/internal/mocktest"
 )
 
-func TestUsageGetUsageV1(t *testing.T) {
+func TestUsageGetCreditsV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
 			t,
 			"--api-key", "string",
-			"usage", "get-usage-v1",
+			"usage", "get-credits-v1",
 		)
 	})
 }
