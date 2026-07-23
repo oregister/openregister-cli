@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0 (2026-07-23)
+
+Full Changelog: [v0.5.3...v0.6.0](https://github.com/oregister/openregister-cli/compare/v0.5.3...v0.6.0)
+
+### Features
+
+* **api:** insolvencies & m&a ([47ee27a](https://github.com/oregister/openregister-cli/commit/47ee27a1ed3b9d5f8bb08471af53d1a6243aed6c))
+* **api:** manual updates ([52b28fa](https://github.com/oregister/openregister-cli/commit/52b28fae69706d5b33c5731fcaa1604a88c95644))
+* **api:** manual updates ([1c383bc](https://github.com/oregister/openregister-cli/commit/1c383bc53a93ad236baa6517306adec27f89a34f))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([4d86d0c](https://github.com/oregister/openregister-cli/commit/4d86d0c35f1083ddb887fa3575ea9e7767240b3c))
+
 ## 0.5.3 (2026-07-15)
 
 Full Changelog: [v0.5.2...v0.5.3](https://github.com/oregister/openregister-cli/compare/v0.5.2...v0.5.3)
