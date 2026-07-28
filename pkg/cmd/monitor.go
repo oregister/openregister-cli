@@ -37,6 +37,12 @@ var monitorCreate = cli.Command{
 			Required: true,
 			BodyPath: "preferences",
 		},
+		&requestflag.Flag[string]{
+			Name:     "update-frequency",
+			Usage:    "How often the monitored company is checked for register updates.\nDefaults to `weekly` if not provided.\n\nOnly supported when `entity_type` is `company`. Requests for `person`\nmonitors that include this field are rejected with a validation error.\n\nDaily monitors are billed at a premium: 50 credits at creation and\n50 credits per month while active, instead of the standard 25.\n",
+			Default:  "weekly",
+			BodyPath: "update_frequency",
+		},
 	},
 	Action:          handleMonitorCreate,
 	HideHelpCommand: true,
