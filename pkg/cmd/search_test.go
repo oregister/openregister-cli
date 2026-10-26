@@ -83,6 +83,60 @@ func TestSearchFindCompaniesV1(t *testing.T) {
 	})
 }
 
+func TestSearchFindInsolvenciesV1(t *testing.T) {
+	t.Skip("Mock server tests are disabled")
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t,
+			"--api-key", "string",
+			"search", "find-insolvencies-v1",
+			"--filter", "{keywords: [string], max: max, min: min, value: value, values: [string], field: debtor_kind}",
+			"--pagination", "{page: 0, per_page: 0}",
+			"--query", "{value: value}",
+		)
+	})
+
+	t.Run("inner flags", func(t *testing.T) {
+		// Check that inner flags have been set up correctly
+		requestflag.CheckInnerFlags(searchFindInsolvenciesV1)
+
+		// Alternative argument passing style using inner flags
+		mocktest.TestRunMockTestWithFlags(
+			t,
+			"--api-key", "string",
+			"search", "find-insolvencies-v1",
+			"--filter", "{keywords: [string], max: max, min: min, value: value, values: [string], field: debtor_kind}",
+			"--pagination.page", "0",
+			"--pagination.per-page", "0",
+			"--query.value", "value",
+		)
+	})
+
+	t.Run("piping data", func(t *testing.T) {
+		// Test piping YAML data over stdin
+		pipeData := []byte("" +
+			"filters:\n" +
+			"  - keywords:\n" +
+			"      - string\n" +
+			"    max: max\n" +
+			"    min: min\n" +
+			"    value: value\n" +
+			"    values:\n" +
+			"      - string\n" +
+			"    field: debtor_kind\n" +
+			"pagination:\n" +
+			"  page: 0\n" +
+			"  per_page: 0\n" +
+			"query:\n" +
+			"  value: value\n")
+		mocktest.TestRunMockTestWithPipeAndFlags(
+			t, pipeData,
+			"--api-key", "string",
+			"search", "find-insolvencies-v1",
+		)
+	})
+}
+
 func TestSearchFindPersonV1(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {

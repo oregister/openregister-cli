@@ -18,6 +18,7 @@ func TestMonitorCreate(t *testing.T) {
 			"--entity-id", "entity_id",
 			"--entity-type", "company",
 			"--preference", "basic",
+			"--update-frequency", "daily",
 		)
 	})
 
@@ -27,7 +28,8 @@ func TestMonitorCreate(t *testing.T) {
 			"entity_id: entity_id\n" +
 			"entity_type: company\n" +
 			"preferences:\n" +
-			"  - basic\n")
+			"  - basic\n" +
+			"update_frequency: daily\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",
