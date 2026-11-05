@@ -80,7 +80,6 @@ func init() {
 			},
 			&requestflag.Flag[string]{
 				Name:    "api-key",
-				Usage:   "API Key Authentication\nProvide your API key as a Bearer token in the Authorization header.\n",
 				Sources: cli.EnvVars("OPENREGISTER_API_KEY"),
 			},
 		},
@@ -170,6 +169,15 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&insolvencyGetDetailsV1,
+				},
+			},
+			{
+				Name:     "job",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&jobCreateV1,
+					&jobGetV1,
 				},
 			},
 			{
