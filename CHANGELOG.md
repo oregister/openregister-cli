@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/oregister/openregister-cli/compare/v0.6.0...v0.7.0) (2026-11-05)
+
+
+### Features
+
+* add the jobs commands ([#13](https://github.com/oregister/openregister-cli/issues/13)) ([d6dc5c9](https://github.com/oregister/openregister-cli/commit/d6dc5c9f83c68df76183fc479ab492aaf1919320))
+
 ## 0.6.0 (2026-07-28)
 
 Full Changelog: [v0.5.3...v0.6.0](https://github.com/oregister/openregister-cli/compare/v0.5.3...v0.6.0)
